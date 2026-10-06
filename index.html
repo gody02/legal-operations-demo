@@ -775,7 +775,276 @@
   margin: 6px 0 0;
   font-size: 14px;
 }
+/* COPILOT AGENT SECTION */
 
+#copilot-agent {
+  padding: 72px 0;
+  background: #f9fafb;
+}
+
+.copilot-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 32px 0 48px;
+}
+
+.copilot-copy,
+.copilot-principle {
+  background: white;
+  border: 1px solid var(--grey-200);
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.copilot-copy h3,
+.copilot-principle h3 {
+  margin: 0 0 12px;
+  font-size: 22px;
+}
+
+.copilot-copy p,
+.copilot-principle p {
+  color: var(--grey-500);
+}
+
+.copilot-copy p:last-child,
+.copilot-principle p:last-child {
+  margin-bottom: 0;
+}
+
+.copilot-principle {
+  background: var(--navy);
+  color: white;
+}
+
+.copilot-principle p {
+  color: #d0d5dd;
+}
+
+.principle-label {
+  display: inline-block;
+  color: #84adff;
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+
+.copilot-architecture {
+  display: flex;
+  align-items: stretch;
+  gap: 9px;
+  margin: 20px 0;
+}
+
+.copilot-architecture.second {
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+.copilot-step {
+  flex: 1;
+  background: white;
+  border: 1px solid var(--grey-200);
+  border-radius: 12px;
+  padding: 17px;
+}
+
+.copilot-step.active {
+  border-color: #84adff;
+  background: var(--blue-light);
+}
+
+.copilot-step span {
+  display: block;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.copilot-step strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.copilot-step p {
+  color: var(--grey-500);
+  font-size: 12px;
+  margin: 0;
+}
+
+.copilot-arrow {
+  display: flex;
+  align-items: center;
+  color: var(--grey-500);
+  font-size: 20px;
+}
+
+
+.agent-example {
+  background: white;
+  border: 1px solid var(--grey-200);
+  border-radius: 16px;
+  padding: 28px;
+  margin: 48px 0;
+}
+
+.agent-example-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+
+.agent-example-title h3 {
+  margin: 6px 0 0;
+  font-size: 24px;
+}
+
+.agent-example-title > p {
+  max-width: 420px;
+  color: var(--grey-500);
+  font-size: 12px;
+  margin: 0;
+}
+
+
+.conversation {
+  max-width: 820px;
+  margin: 0 auto 30px;
+}
+
+.message {
+  max-width: 78%;
+  margin-bottom: 22px;
+}
+
+.agent-message {
+  margin-left: auto;
+}
+
+.message-label {
+  color: var(--grey-500);
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.message-bubble {
+  border-radius: 13px;
+  padding: 15px 17px;
+  color: var(--grey-700);
+  font-size: 14px;
+}
+
+.message-bubble.user {
+  background: var(--grey-100);
+}
+
+.message-bubble.agent {
+  background: var(--blue-light);
+  border: 1px solid #b2ddff;
+}
+
+
+.agent-output {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--grey-200);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.agent-output div {
+  padding: 16px;
+  border-right: 1px solid var(--grey-200);
+  border-bottom: 1px solid var(--grey-200);
+}
+
+.agent-output span,
+.agent-output strong {
+  display: block;
+}
+
+.agent-output span {
+  color: var(--grey-500);
+  font-size: 11px;
+  margin-bottom: 5px;
+}
+
+.agent-output strong {
+  font-size: 14px;
+}
+
+
+.copilot-proof {
+  margin-top: 45px;
+}
+
+.copilot-proof h3 {
+  font-size: 23px;
+  margin-bottom: 18px;
+}
+
+.copilot-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.copilot-proof-grid div {
+  background: white;
+  border: 1px solid var(--grey-200);
+  border-radius: 9px;
+  padding: 11px 14px;
+  font-size: 13px;
+}
+
+
+@media (max-width: 850px) {
+
+  .copilot-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .copilot-architecture {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .copilot-arrow {
+    justify-content: center;
+    transform: rotate(90deg);
+  }
+
+  .agent-example-title {
+    display: block;
+  }
+
+  .agent-example-title > p {
+    margin-top: 12px;
+  }
+
+}
+
+
+@media (max-width: 620px) {
+
+  .agent-output,
+  .copilot-proof-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .message {
+    max-width: 95%;
+  }
+
+}
 @media (max-width: 850px) {
   .implementation-feature,
   .implementation-feature.reverse {
@@ -1337,6 +1606,257 @@
         experienced without exposing the underlying Microsoft tenant,
         credentials or SharePoint records.
       </p>
+    </div>
+
+  </div>
+</section>
+    <section id="copilot-agent">
+  <div class="container">
+
+    <div class="section-heading">
+      <div class="eyebrow">Agentic AI extension</div>
+
+      <h2>Agentic Legal Intake with Microsoft Copilot Studio</h2>
+
+      <p>
+        I extended the legal operations prototype with a Microsoft Copilot
+        Studio agent that acts as a conversational intake layer in front of
+        the existing SharePoint and Power Automate workflow.
+      </p>
+    </div>
+
+
+    <div class="copilot-intro">
+
+      <div class="copilot-copy">
+        <h3>Why add an AI agent?</h3>
+
+        <p>
+          A traditional intake form requires the business user to understand
+          exactly what information Legal needs. The Copilot agent instead
+          allows the user to describe the issue naturally.
+        </p>
+
+        <p>
+          The agent interprets the request, extracts information already
+          provided, identifies missing or ambiguous details and asks targeted
+          follow-up questions before submitting a structured legal matter.
+        </p>
+
+        <p>
+          It also derives a preliminary risk score from defined triage
+          criteria rather than asking the business user to determine their own
+          legal risk score.
+        </p>
+      </div>
+
+      <div class="copilot-principle">
+        <span class="principle-label">Design principle</span>
+
+        <h3>AI for interpretation. Rules for control.</h3>
+
+        <p>
+          I deliberately separated AI-driven conversational intake from
+          deterministic workflow controls. Copilot handles interpretation and
+          information gathering, while Power Automate controls routing,
+          approvals, SLA calculation and escalation.
+        </p>
+
+        <p>
+          This keeps the user experience flexible while preserving a
+          predictable and auditable legal operations process.
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="copilot-architecture">
+
+      <div class="copilot-step">
+        <span>01</span>
+        <strong>Business User</strong>
+        <p>Describes the legal issue naturally.</p>
+      </div>
+
+      <div class="copilot-arrow">→</div>
+
+      <div class="copilot-step active">
+        <span>02</span>
+        <strong>Copilot Studio Agent</strong>
+        <p>
+          Extracts facts, identifies missing information, infers matter type
+          and derives a preliminary risk score.
+        </p>
+      </div>
+
+      <div class="copilot-arrow">→</div>
+
+      <div class="copilot-step">
+        <span>03</span>
+        <strong>Submission Flow</strong>
+        <p>
+          Calls Power Automate and converts the conversation into structured
+          matter data.
+        </p>
+      </div>
+
+      <div class="copilot-arrow">→</div>
+
+      <div class="copilot-step">
+        <span>04</span>
+        <strong>SharePoint</strong>
+        <p>Creates the matter in the Legal Requests register.</p>
+      </div>
+
+    </div>
+
+
+    <div class="copilot-architecture second">
+
+      <div class="copilot-step">
+        <span>05</span>
+        <strong>Automated Triage</strong>
+        <p>Routes the matter to the appropriate legal workstream.</p>
+      </div>
+
+      <div class="copilot-arrow">→</div>
+
+      <div class="copilot-step">
+        <span>06</span>
+        <strong>Risk, SLA & Approval</strong>
+        <p>
+          Applies deterministic risk bands, response SLAs and human approval
+          requirements.
+        </p>
+      </div>
+
+      <div class="copilot-arrow">→</div>
+
+      <div class="copilot-step">
+        <span>07</span>
+        <strong>SLA Monitor</strong>
+        <p>Scheduled automation monitors open matters for overdue SLAs.</p>
+      </div>
+
+      <div class="copilot-arrow">→</div>
+
+      <div class="copilot-step">
+        <span>08</span>
+        <strong>Escalation</strong>
+        <p>
+          Overdue matters are updated and Legal Operations receives a Teams
+          notification.
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="agent-example">
+
+      <div class="agent-example-title">
+        <div>
+          <span class="eyebrow">Illustrative agent interaction</span>
+          <h3>From natural language to structured legal workflow</h3>
+        </div>
+
+        <p>
+          This example illustrates the behaviour configured in the agent and
+          downstream workflow. It is not presented as a verbatim transcript.
+        </p>
+      </div>
+
+
+      <div class="conversation">
+
+        <div class="message">
+          <div class="message-label">Business user</div>
+
+          <div class="message-bubble user">
+            We discovered a potential customer data breach. The regulator may
+            need to be notified urgently and senior management needs advice
+            today. The matter is in England and Wales.
+          </div>
+        </div>
+
+
+        <div class="message agent-message">
+          <div class="message-label">Legal Intake Agent</div>
+
+          <div class="message-bubble agent">
+            I have identified this as a likely Regulatory matter. The potential
+            data breach, possible regulatory notification and urgent deadline
+            are significant risk indicators. I will gather any remaining
+            information required before submitting the matter to the Legal
+            Operations workflow.
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="agent-output">
+
+        <div>
+          <span>Matter Type</span>
+          <strong>Regulatory</strong>
+        </div>
+
+        <div>
+          <span>Key Risk Indicators</span>
+          <strong>Data breach, regulator, urgency</strong>
+        </div>
+
+        <div>
+          <span>Preliminary Risk</span>
+          <strong>Critical</strong>
+        </div>
+
+        <div>
+          <span>Assigned Team</span>
+          <strong>Regulatory</strong>
+        </div>
+
+        <div>
+          <span>Response SLA</span>
+          <strong>4 hours</strong>
+        </div>
+
+        <div>
+          <span>Human Approval</span>
+          <strong>Required</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="copilot-proof">
+
+      <h3>What I configured</h3>
+
+      <div class="copilot-proof-grid">
+
+        <div>✓ Microsoft Copilot Studio Legal Intake Agent</div>
+
+        <div>✓ Natural-language legal intake</div>
+
+        <div>✓ Targeted follow-up questioning</div>
+
+        <div>✓ Matter-type interpretation</div>
+
+        <div>✓ Agent-derived preliminary risk scoring</div>
+
+        <div>✓ Agent-triggered Power Automate submission flow</div>
+
+        <div>✓ Structured SharePoint matter creation</div>
+
+        <div>✓ Connection to the existing triage workflow</div>
+
+      </div>
+
     </div>
 
   </div>
