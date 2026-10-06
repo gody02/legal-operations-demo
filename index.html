@@ -585,7 +585,219 @@
       padding: 20px 0 32px;
       font-size: 13px;
     }
+/* POWER PLATFORM IMPLEMENTATION */
 
+#implementation {
+  padding-top: 72px;
+}
+
+.implementation-feature {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.7fr) minmax(0, 1.3fr);
+  gap: 42px;
+  align-items: center;
+  margin: 36px 0 72px;
+}
+
+.implementation-feature.reverse {
+  grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
+}
+
+.implementation-feature.reverse .implementation-copy {
+  order: 2;
+}
+
+.implementation-feature.reverse > a {
+  order: 1;
+}
+
+.implementation-number {
+  display: block;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.implementation-copy h3 {
+  margin: 0 0 12px;
+  font-size: 25px;
+  letter-spacing: -0.02em;
+}
+
+.implementation-copy p {
+  color: var(--grey-500);
+  margin: 0;
+}
+
+.implementation-main-image {
+  display: block;
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  background: white;
+  border: 1px solid var(--grey-200);
+  border-radius: 14px;
+  padding: 8px;
+  box-shadow: var(--shadow);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.implementation-main-image:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(16, 24, 40, 0.12);
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.tech-tags span {
+  border: 1px solid var(--grey-200);
+  background: var(--white);
+  border-radius: 999px;
+  padding: 6px 10px;
+  color: var(--grey-700);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.logic-summary {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.logic-summary div {
+  border: 1px solid var(--grey-200);
+  background: var(--white);
+  border-radius: 9px;
+  padding: 10px 12px;
+}
+
+.logic-summary strong,
+.logic-summary span {
+  display: block;
+}
+
+.logic-summary strong {
+  font-size: 13px;
+}
+
+.logic-summary span {
+  color: var(--grey-500);
+  font-size: 11px;
+  margin-top: 2px;
+}
+
+.detail-gallery-heading {
+  margin: 72px 0 24px;
+}
+
+.detail-gallery-heading h3 {
+  font-size: 26px;
+  margin: 0 0 5px;
+}
+
+.detail-gallery-heading p {
+  margin: 0;
+  color: var(--grey-500);
+}
+
+.screenshot-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.screenshot-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: var(--white);
+  border: 1px solid var(--grey-200);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.screenshot-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.screenshot-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: contain;
+  display: block;
+  background: #f9fafb;
+  border-bottom: 1px solid var(--grey-200);
+}
+
+.screenshot-card div {
+  padding: 14px 16px;
+}
+
+.screenshot-card strong,
+.screenshot-card span {
+  display: block;
+}
+
+.screenshot-card strong {
+  font-size: 14px;
+}
+
+.screenshot-card span {
+  color: var(--grey-500);
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+.implementation-note {
+  margin-top: 36px;
+  border: 1px solid #b2ddff;
+  background: var(--blue-light);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.implementation-note strong {
+  color: var(--navy);
+}
+
+.implementation-note p {
+  color: var(--grey-700);
+  margin: 6px 0 0;
+  font-size: 14px;
+}
+
+@media (max-width: 850px) {
+  .implementation-feature,
+  .implementation-feature.reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .implementation-feature.reverse .implementation-copy,
+  .implementation-feature.reverse > a {
+    order: initial;
+  }
+}
+
+@media (max-width: 620px) {
+  .screenshot-gallery,
+  .logic-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .screenshot-card img {
+    height: auto;
+  }
+}
     @media (max-width: 850px) {
       .hero-grid,
       .about-grid {
@@ -909,7 +1121,226 @@
         </div>
       </div>
     </section>
+<section id="implementation">
+  <div class="container">
 
+    <div class="section-heading">
+      <div class="eyebrow">Microsoft Power Platform implementation</div>
+
+      <h2>Behind the interactive demo</h2>
+
+      <p>
+        The public experience above mirrors a working legal operations
+        prototype configured using Microsoft SharePoint and Power Automate.
+        The screenshots below show the actual workflow implementation,
+        including intake, routing, risk classification, human approval,
+        matter updates and background SLA escalation.
+      </p>
+    </div>
+
+
+    <div class="implementation-feature">
+      <div class="implementation-copy">
+        <span class="implementation-number">01</span>
+
+        <h3>End-to-end legal intake and triage</h3>
+
+        <p>
+          A new legal request triggers an automated workflow that classifies
+          the matter, routes it to the appropriate legal team, calculates
+          risk and SLA requirements, applies approval rules and updates the
+          matter record.
+        </p>
+
+        <div class="tech-tags">
+          <span>SharePoint</span>
+          <span>Power Automate</span>
+          <span>Automated routing</span>
+          <span>Risk classification</span>
+        </div>
+      </div>
+
+      <a href="workflow-overview.png" target="_blank">
+        <img
+          class="implementation-main-image"
+          src="workflow-overview.png"
+          alt="Overview of the Power Automate legal intake and matter triage workflow"
+          loading="lazy"
+        />
+      </a>
+    </div>
+
+
+    <div class="implementation-feature reverse">
+      <div class="implementation-copy">
+        <span class="implementation-number">02</span>
+
+        <h3>Decision logic and human oversight</h3>
+
+        <p>
+          Matter type determines the appropriate legal workstream while risk
+          scoring drives service levels and approval requirements. High and
+          Critical matters require human approval, while lower-risk matters
+          can proceed automatically.
+        </p>
+
+        <div class="logic-summary">
+          <div>
+            <strong>Critical</strong>
+            <span>90+ · 4 hours · Approval</span>
+          </div>
+
+          <div>
+            <strong>High</strong>
+            <span>75–89 · 24 hours · Approval</span>
+          </div>
+
+          <div>
+            <strong>Medium</strong>
+            <span>50–74 · 48 hours</span>
+          </div>
+
+          <div>
+            <strong>Low</strong>
+            <span>&lt;50 · 72 hours</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="workflow-detail-1.png" target="_blank">
+        <img
+          class="implementation-main-image"
+          src="workflow-detail-1.png"
+          alt="Detailed Power Automate legal workflow decision logic"
+          loading="lazy"
+        />
+      </a>
+    </div>
+
+
+    <div class="implementation-feature">
+      <div class="implementation-copy">
+        <span class="implementation-number">03</span>
+
+        <h3>Background SLA monitoring and escalation</h3>
+
+        <p>
+          A separate scheduled workflow reviews open matters, identifies
+          expired response SLAs, checks that the matter has not already been
+          escalated, updates the SharePoint record and generates a Legal
+          Operations notification.
+        </p>
+
+        <div class="tech-tags">
+          <span>Scheduled monitoring</span>
+          <span>Exception handling</span>
+          <span>SLA management</span>
+          <span>Teams notification</span>
+        </div>
+      </div>
+
+      <a href="sla-overview.png" target="_blank">
+        <img
+          class="implementation-main-image"
+          src="sla-overview.png"
+          alt="Power Automate SLA monitoring and escalation workflow"
+          loading="lazy"
+        />
+      </a>
+    </div>
+
+
+    <div class="detail-gallery-heading">
+      <h3>Detailed implementation</h3>
+
+      <p>
+        Select any screenshot to inspect the configuration at full size.
+      </p>
+    </div>
+
+    <div class="screenshot-gallery">
+
+      <a href="workflow-detail-1.png" target="_blank" class="screenshot-card">
+        <img src="workflow-detail-1.png" alt="Workflow detail one" loading="lazy">
+        <div>
+          <strong>Routing & triage logic</strong>
+          <span>Detailed workflow configuration</span>
+        </div>
+      </a>
+
+      <a href="workflow-detail-2.png" target="_blank" class="screenshot-card">
+        <img src="workflow-detail-2.png" alt="Workflow detail two" loading="lazy">
+        <div>
+          <strong>Risk & SLA logic</strong>
+          <span>Conditional workflow branches</span>
+        </div>
+      </a>
+
+      <a href="workflow-detail-3.png" target="_blank" class="screenshot-card">
+        <img src="workflow-detail-3.png" alt="Workflow detail three" loading="lazy">
+        <div>
+          <strong>Approval workflow</strong>
+          <span>Human-in-the-loop configuration</span>
+        </div>
+      </a>
+
+      <a href="workflow-success.png" target="_blank" class="screenshot-card">
+        <img src="workflow-success.png" alt="Successful Power Automate workflow run" loading="lazy">
+        <div>
+          <strong>Successful execution</strong>
+          <span>Validated workflow run</span>
+        </div>
+      </a>
+
+      <a href="workflow-end.png" target="_blank" class="screenshot-card">
+        <img src="workflow-end.png" alt="Final legal workflow stages" loading="lazy">
+        <div>
+          <strong>Matter workflow completion</strong>
+          <span>Final processing stages</span>
+        </div>
+      </a>
+
+      <a href="sla-detail-1.png" target="_blank" class="screenshot-card">
+        <img src="sla-detail-1.png" alt="SLA escalation workflow detail one" loading="lazy">
+        <div>
+          <strong>SLA monitor</strong>
+          <span>Scheduled matter review</span>
+        </div>
+      </a>
+
+      <a href="sla-detail-2.png" target="_blank" class="screenshot-card">
+        <img src="sla-detail-2.png" alt="SLA escalation workflow detail two" loading="lazy">
+        <div>
+          <strong>Breach detection</strong>
+          <span>SLA and status conditions</span>
+        </div>
+      </a>
+
+      <a href="sla-detail-3.png" target="_blank" class="screenshot-card">
+        <img src="sla-detail-3.png" alt="SLA escalation workflow detail three" loading="lazy">
+        <div>
+          <strong>Escalation & notification</strong>
+          <span>Record update and Legal Operations alert</span>
+        </div>
+      </a>
+
+    </div>
+
+
+    <div class="implementation-note">
+      <strong>Why is the public demo separate?</strong>
+
+      <p>
+        The Microsoft implementation runs within a private university
+        environment. The public interface therefore reproduces the same
+        decision logic using fictional data, allowing the workflow to be
+        experienced without exposing the underlying Microsoft tenant,
+        credentials or SharePoint records.
+      </p>
+    </div>
+
+  </div>
+</section>
     <section id="process">
       <div class="container">
         <div class="section-heading">
