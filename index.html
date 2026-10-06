@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Interactive Legal Operations Workflow Demo by Akinyemi Akinrinde"
+  />
+
+  <title>Legal Operations Workflow Demo | Akinyemi Akinrinde</title>
+
+  <style>
+    :root {
+      --navy: #101828;
+      --navy-2: #1d2939;
+      --blue: #175cd3;
+      --blue-light: #eff8ff;
+      --green: #067647;
+      --green-light: #ecfdf3;
+      --amber: #b54708;
+      --amber-light: #fffaeb;
+      --red: #b42318;
+      --red-light: #fef3f2;
+      --purple: #6941c6;
+      --purple-light: #f4f3ff;
+      --grey-50: #f9fafb;
+      --grey-100: #f2f4f7;
+      --grey-200: #eaecf0;
+      --grey-500: #667085;
+      --grey-700: #344054;
+      --white: #ffffff;
+      --shadow: 0 8px 24px rgba(16, 24, 40, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      color: var(--navy);
+      background: var(--grey-50);
+      line-height: 1.5;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--grey-200);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: var(--navy);
+      color: var(--white);
+      font-size: 14px;
+    }
+
+    .nav-meta {
+      color: var(--grey-500);
+      font-size: 14px;
+    }
+
+    .hero {
+      padding: 72px 0 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border: 1px solid #b2ddff;
+      background: var(--blue-light);
+      color: var(--blue);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 6vw, 64px);
+      line-height: 1.02;
+      margin: 0 0 20px;
+      letter-spacing: -0.045em;
+    }
+
+    .hero p {
+      color: var(--grey-500);
+      font-size: 19px;
+      max-width: 720px;
+      margin: 0 0 28px;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      min-height: 46px;
+      border: 0;
+      border-radius: 9px;
+      padding: 0 18px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: 0.16s ease;
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: #25334a;
+    }
+
+    .btn-secondary {
+      background: var(--white);
+      color: var(--navy);
+      border: 1px solid var(--grey-200);
+    }
+
+    .btn-secondary:hover {
+      background: var(--grey-50);
+    }
+
+    .btn-danger {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .btn-danger:hover {
+      background: #912018;
+    }
+
+    .hero-panel {
+      background: var(--white);
+      border: 1px solid var(--grey-200);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .architecture {
+      display: grid;
+      gap: 12px;
+    }
+
+    .architecture-step {
+      background: var(--grey-50);
+      border: 1px solid var(--grey-200);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .arrow {
+      text-align: center;
+      color: var(--grey-500);
+      font-size: 18px;
+    }
+
+    section {
+      padding: 40px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 24px;
+    }
+
+    .section-heading h2 {
+      font-size: 32px;
+      letter-spacing: -0.025em;
+      margin: 0 0 8px;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--grey-500);
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--grey-200);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 2px 8px rgba(16, 24, 40, 0.03);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .form-group {
+      display: grid;
+      gap: 7px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 650;
+      color: var(--grey-700);
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid #d0d5dd;
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--navy);
+      min-height: 44px;
+      padding: 10px 12px;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 115px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #84adff;
+      box-shadow: 0 0 0 3px rgba(23, 92, 211, 0.1);
+    }
+
+    .helper {
+      color: var(--grey-500);
+      font-size: 13px;
+    }
+
+    .range-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    input[type="range"] {
+      padding: 0;
+      border: 0;
+      box-shadow: none;
+    }
+
+    .score-pill {
+      min-width: 48px;
+      text-align: center;
+      padding: 7px 9px;
+      background: var(--grey-100);
+      border-radius: 8px;
+      font-weight: 800;
+    }
+
+    .presets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .preset {
+      border: 1px solid var(--grey-200);
+      background: var(--white);
+      color: var(--grey-700);
+      border-radius: 999px;
+      padding: 7px 12px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .preset:hover {
+      background: var(--grey-100);
+    }
+
+    #resultSection {
+      display: none;
+    }
+
+    .result-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .result-heading h3 {
+      font-size: 27px;
+      margin: 0 0 6px;
+    }
+
+    .result-heading p {
+      margin: 0;
+      color: var(--grey-500);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 13px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .badge-low {
+      color: var(--green);
+      background: var(--green-light);
+    }
+
+    .badge-medium {
+      color: var(--blue);
+      background: var(--blue-light);
+    }
+
+    .badge-high {
+      color: var(--amber);
+      background: var(--amber-light);
+    }
+
+    .badge-critical {
+      color: var(--red);
+      background: var(--red-light);
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border: 1px solid var(--grey-200);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .metric {
+      padding: 20px;
+      border-right: 1px solid var(--grey-200);
+    }
+
+    .metric:last-child {
+      border-right: 0;
+    }
+
+    .metric-label {
+      color: var(--grey-500);
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .metric-value {
+      font-weight: 800;
+      font-size: 17px;
+    }
+
+    .explanation {
+      border-left: 4px solid var(--blue);
+      background: var(--blue-light);
+      padding: 16px 18px;
+      border-radius: 0 10px 10px 0;
+      color: var(--grey-700);
+      margin-bottom: 24px;
+    }
+
+    .explanation strong {
+      color: var(--navy);
+    }
+
+    .lifecycle {
+      display: grid;
+      gap: 0;
+      margin-top: 22px;
+    }
+
+    .event {
+      display: grid;
+      grid-template-columns: 95px 22px 1fr;
+      gap: 12px;
+      min-height: 64px;
+    }
+
+    .event-time {
+      font-size: 13px;
+      color: var(--grey-500);
+      padding-top: 2px;
+    }
+
+    .event-track {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .event-track::after {
+      content: "";
+      position: absolute;
+      width: 2px;
+      background: var(--grey-200);
+      top: 14px;
+      bottom: -8px;
+    }
+
+    .event:last-child .event-track::after {
+      display: none;
+    }
+
+    .event-dot {
+      position: relative;
+      z-index: 1;
+      width: 12px;
+      height: 12px;
+      margin-top: 4px;
+      border-radius: 50%;
+      background: var(--blue);
+      border: 3px solid var(--blue-light);
+    }
+
+    .event.escalated .event-dot {
+      background: var(--red);
+      border-color: var(--red-light);
+    }
+
+    .event-title {
+      font-weight: 750;
+      margin-bottom: 2px;
+    }
+
+    .event-copy {
+      color: var(--grey-500);
+      font-size: 13px;
+    }
+
+    .escalation-panel {
+      margin-top: 24px;
+      padding: 20px;
+      border: 1px solid #fecdca;
+      background: var(--red-light);
+      border-radius: 12px;
+      display: none;
+    }
+
+    .escalation-panel h4 {
+      color: var(--red);
+      margin: 0 0 8px;
+    }
+
+    .escalation-panel p {
+      color: var(--grey-700);
+      margin: 0;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .process-card {
+      border: 1px solid var(--grey-200);
+      background: var(--white);
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .process-number {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .process-card h4 {
+      margin: 0 0 6px;
+    }
+
+    .process-card p {
+      margin: 0;
+      color: var(--grey-500);
+      font-size: 13px;
+    }
+
+    .about {
+      background: var(--navy);
+      color: var(--white);
+      margin-top: 40px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      padding: 44px 0;
+    }
+
+    .about h2 {
+      margin: 0 0 12px;
+      font-size: 30px;
+    }
+
+    .about p {
+      color: #d0d5dd;
+      margin: 0;
+    }
+
+    .about-note {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 12px;
+      padding: 20px;
+      font-size: 14px;
+      color: #eaecf0;
+    }
+
+    footer {
+      background: var(--navy);
+      color: #98a2b3;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 20px 0 32px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 850px) {
+      .hero-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .metric-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .metric:nth-child(2) {
+        border-right: 0;
+      }
+
+      .metric:nth-child(-n+2) {
+        border-bottom: 1px solid var(--grey-200);
+      }
+    }
+
+    @media (max-width: 620px) {
+      .nav-meta {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      .form-grid,
+      .metric-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .metric {
+        border-right: 0;
+        border-bottom: 1px solid var(--grey-200);
+      }
+
+      .metric:last-child {
+        border-bottom: 0;
+      }
+
+      .result-top {
+        flex-direction: column;
+      }
+
+      .event {
+        grid-template-columns: 70px 18px 1fr;
+      }
+
+      .card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-mark">AA</div>
+        <span>Akinyemi Akinrinde</span>
+      </div>
+      <div class="nav-meta">Legal Technology Portfolio</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Interactive legal operations prototype</div>
+
+          <h1>From legal request to the right team, automatically.</h1>
+
+          <p>
+            An interactive demonstration of a legal intake and matter-triage
+            workflow designed for an in-house legal function. Submit a fictional
+            legal request to experience automated routing, risk classification,
+            human-approval rules, service levels and escalation.
+          </p>
+
+          <div class="button-row">
+            <button class="btn btn-primary" id="startDemo">
+              Try the workflow
+            </button>
+
+            <button class="btn btn-secondary" id="viewProcess">
+              How it works
+            </button>
+          </div>
+        </div>
+
+        <aside class="hero-panel" aria-label="Solution architecture">
+          <div class="architecture">
+            <div class="architecture-step">1. Structured legal request</div>
+            <div class="arrow">↓</div>
+            <div class="architecture-step">2. Automated triage & routing</div>
+            <div class="arrow">↓</div>
+            <div class="architecture-step">3. Risk & SLA classification</div>
+            <div class="arrow">↓</div>
+            <div class="architecture-step">4. Human approval where required</div>
+            <div class="arrow">↓</div>
+            <div class="architecture-step">5. SLA monitoring & escalation</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="demo">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Submit a fictional legal request</h2>
+          <p>
+            No information is stored. Use the presets or create your own
+            fictional scenario.
+          </p>
+        </div>
+
+        <div class="presets">
+          <button class="preset" type="button" data-preset="nda">
+            Ordinary NDA
+          </button>
+
+          <button class="preset" type="button" data-preset="employment">
+            Employment grievance
+          </button>
+
+          <button class="preset" type="button" data-preset="litigation">
+            £500k threatened litigation
+          </button>
+
+          <button class="preset" type="button" data-preset="regulatory">
+            Regulatory incident
+          </button>
+        </div>
+
+        <form class="card" id="triageForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="matterType">Matter type</label>
+              <select id="matterType" required>
+                <option value="">Select matter type</option>
+                <option>Commercial Contract</option>
+                <option>Employment</option>
+                <option>Litigation</option>
+                <option>Corporate</option>
+                <option>Regulatory</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="businessUnit">Business unit</label>
+              <select id="businessUnit" required>
+                <option value="">Select business unit</option>
+                <option>Sales</option>
+                <option>Finance</option>
+                <option>HR</option>
+                <option>Operations</option>
+                <option>Technology</option>
+                <option>Procurement</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="counterparty">Counterparty</label>
+              <input
+                id="counterparty"
+                type="text"
+                placeholder="Example Supplier Ltd"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="jurisdiction">Jurisdiction</label>
+              <select id="jurisdiction" required>
+                <option>England & Wales</option>
+                <option>Scotland</option>
+                <option>Northern Ireland</option>
+                <option>European Union</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="matterValue">Matter value (£)</label>
+              <input
+                id="matterValue"
+                type="number"
+                min="0"
+                step="1000"
+                value="10000"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="deadline">Requested deadline</label>
+              <input id="deadline" type="date" required />
+            </div>
+
+            <div class="form-group full">
+              <label for="description">What does Legal need to know?</label>
+              <textarea
+                id="description"
+                placeholder="Describe the fictional legal issue..."
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-group full">
+              <label for="riskScore">Preliminary risk score</label>
+
+              <div class="range-row">
+                <input
+                  id="riskScore"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="25"
+                />
+                <div class="score-pill" id="riskScoreDisplay">25</div>
+              </div>
+
+              <div class="helper">
+                Demo scoring model: &lt;50 Low, 50–74 Medium, 75–89 High,
+                90+ Critical.
+              </div>
+            </div>
+          </div>
+
+          <div class="button-row" style="margin-top: 24px;">
+            <button class="btn btn-primary" type="submit">
+              Submit for legal triage
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="resultSection">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Triage result</h2>
+          <p>
+            The same decision rules are implemented in my Microsoft Power
+            Automate prototype.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="result-top">
+            <div class="result-heading">
+              <h3 id="resultTitle">Matter triaged</h3>
+              <p id="resultId"></p>
+            </div>
+
+            <span class="badge" id="riskBadge"></span>
+          </div>
+
+          <div class="metric-grid">
+            <div class="metric">
+              <div class="metric-label">Assigned team</div>
+              <div class="metric-value" id="assignedTeam"></div>
+            </div>
+
+            <div class="metric">
+              <div class="metric-label">Response SLA</div>
+              <div class="metric-value" id="sla"></div>
+            </div>
+
+            <div class="metric">
+              <div class="metric-label">Human approval</div>
+              <div class="metric-value" id="approval"></div>
+            </div>
+
+            <div class="metric">
+              <div class="metric-label">Status</div>
+              <div class="metric-value" id="status"></div>
+            </div>
+          </div>
+
+          <div class="explanation">
+            <strong>Why this happened</strong>
+            <div id="reasoning" style="margin-top:6px;"></div>
+          </div>
+
+          <div class="button-row">
+            <button class="btn btn-danger" id="simulateBreach" type="button">
+              Simulate SLA breach
+            </button>
+
+            <button class="btn btn-secondary" id="newMatter" type="button">
+              Try another matter
+            </button>
+          </div>
+
+          <div class="escalation-panel" id="escalationPanel">
+            <h4>SLA breach detected — matter escalated</h4>
+
+            <p>
+              The matter has been flagged as escalated. In the implemented
+              Power Automate workflow, a scheduled monitoring flow identifies
+              open matters whose SLA has expired, updates the SharePoint matter
+              record and generates a Legal Operations alert.
+            </p>
+          </div>
+
+          <div style="margin-top:32px;">
+            <strong>Matter lifecycle</strong>
+
+            <div class="lifecycle" id="lifecycle" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container">
+        <div class="section-heading">
+          <h2>How the workflow works</h2>
+
+          <p>
+            The prototype combines structured legal intake with automated
+            workflow execution and human oversight.
+          </p>
+        </div>
+
+        <div class="process-grid">
+          <div class="process-card">
+            <div class="process-number">1</div>
+            <h4>Intake</h4>
+            <p>
+              Business users submit structured information instead of relying
+              on unstructured email requests.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-number">2</div>
+            <h4>Routing</h4>
+            <p>
+              Matter type determines which legal workstream receives the
+              request.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-number">3</div>
+            <h4>Risk & SLA</h4>
+            <p>
+              Risk scoring drives classification and demo response service
+              levels.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-number">4</div>
+            <h4>Human oversight</h4>
+            <p>
+              High and Critical matters require human approval before final
+              assignment.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-number">5</div>
+            <h4>Escalation</h4>
+            <p>
+              A separate scheduled flow monitors open matters and escalates
+              SLA breaches.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about">
+      <div class="container about-grid">
+        <div>
+          <h2>Built to demonstrate legal-technology consulting thinking.</h2>
+
+          <p>
+            I designed the workflow around an in-house legal team's need to
+            capture requests consistently, route work intelligently, preserve
+            human judgement for higher-risk matters and monitor service levels.
+          </p>
+        </div>
+
+        <div class="about-note">
+          <strong>Implementation note</strong><br /><br />
+
+          The underlying workflow logic has been configured separately in
+          Microsoft SharePoint and Power Automate. This public site mirrors that
+          logic using fictional data so the workflow can be experienced without
+          exposing the private Microsoft environment or university tenant.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Prototype by Akinyemi Akinrinde · Fictional demonstration data only ·
+      Demo SLA values are illustrative and are not legal or professional
+      standards.
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById("triageForm");
+    const riskScore = document.getElementById("riskScore");
+    const riskScoreDisplay = document.getElementById("riskScoreDisplay");
+    const resultSection = document.getElementById("resultSection");
+    const escalationPanel = document.getElementById("escalationPanel");
+    const lifecycle = document.getElementById("lifecycle");
+
+    let activeResult = null;
+
+    const routing = {
+      "Commercial Contract": "Commercial",
+      "Employment": "Employment",
+      "Litigation": "Disputes",
+      "Corporate": "Corporate",
+      "Regulatory": "Regulatory"
+    };
+
+    const presets = {
+      nda: {
+        matterType: "Commercial Contract",
+        businessUnit: "Procurement",
+        counterparty: "Example Supplier Ltd",
+        value: 10000,
+        risk: 25,
+        description:
+          "Supplier has provided its standard NDA and Procurement would like Legal to review the confidentiality provisions before discussions begin."
+      },
+
+      employment: {
+        matterType: "Employment",
+        businessUnit: "HR",
+        counterparty: "Employee",
+        value: 25000,
+        risk: 82,
+        description:
+          "Employee has raised a formal grievance alleging discrimination and HR requires Legal input before responding."
+      },
+
+      litigation: {
+        matterType: "Litigation",
+        businessUnit: "Sales",
+        counterparty: "Example Manufacturing Ltd",
+        value: 500000,
+        risk: 95,
+        description:
+          "Customer alleges material breach of contract and has threatened proceedings unless the dispute is resolved urgently."
+      },
+
+      regulatory: {
+        matterType: "Regulatory",
+        businessUnit: "Technology",
+        counterparty: "Regulator",
+        value: 100000,
+        risk: 91,
+        description:
+          "Potential personal-data incident has been identified and the business requires urgent Legal review of notification and regulatory obligations."
+      }
+    };
+
+    function getRisk(score) {
+      if (score >= 90) {
+        return {
+          rating: "Critical",
+          slaHours: 4,
+          approval: true,
+          badge: "badge-critical"
+        };
+      }
+
+      if (score >= 75) {
+        return {
+          rating: "High",
+          slaHours: 24,
+          approval: true,
+          badge: "badge-high"
+        };
+      }
+
+      if (score >= 50) {
+        return {
+          rating: "Medium",
+          slaHours: 48,
+          approval: false,
+          badge: "badge-medium"
+        };
+      }
+
+      return {
+        rating: "Low",
+        slaHours: 72,
+        approval: false,
+        badge: "badge-low"
+      };
+    }
+
+    function makeRequestId() {
+      const value = Math.floor(1000 + Math.random() * 9000);
+      return `DEMO-${value}`;
+    }
+
+    function formatTime(date) {
+      return new Intl.DateTimeFormat("en-GB", {
+        day: "2-digit",
+        month: "short",
+        hour: "2-digit",
+        minute: "2-digit"
+      }).format(date);
+    }
+
+    function eventRow(time, title, copy, escalated = false) {
+      return `
+        <div class="event ${escalated ? "escalated" : ""}">
+          <div class="event-time">${time}</div>
+
+          <div class="event-track">
+            <div class="event-dot"></div>
+          </div>
+
+          <div>
+            <div class="event-title">${title}</div>
+            <div class="event-copy">${copy}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderLifecycle(result, escalated = false) {
+      const now = new Date();
+      const due = new Date(now.getTime() + result.risk.slaHours * 60 * 60 * 1000);
+
+      let html = "";
+
+      html += eventRow(
+        formatTime(now),
+        "Legal request submitted",
+        `${result.matterType} request captured through structured intake.`
+      );
+
+      html += eventRow(
+        formatTime(now),
+        `Routed to ${result.team}`,
+        `Matter type triggered the ${result.team} workstream.`
+      );
+
+      html += eventRow(
+        formatTime(now),
+        `${result.risk.rating} risk classification`,
+        `Risk score ${result.score} produced a ${result.risk.rating} rating and ${result.risk.slaHours}-hour SLA.`
+      );
+
+      if (result.risk.approval) {
+        html += eventRow(
+          formatTime(now),
+          "Human approval required",
+          "High and Critical matters enter the approval workflow before final assignment."
+        );
+      } else {
+        html += eventRow(
+          formatTime(now),
+          "Automatically assigned",
+          "Low and Medium matters do not require the demo approval gate."
+        );
+      }
+
+      html += eventRow(
+        formatTime(due),
+        "SLA due",
+        `Configured response deadline: ${result.risk.slaHours} hours from submission.`
+      );
+
+      if (escalated) {
+        html += eventRow(
+          "Demo",
+          "SLA breach simulated",
+          "Matter flagged as Escalated and Legal Operations notification generated.",
+          true
+        );
+      }
+
+      lifecycle.innerHTML = html;
+    }
+
+    riskScore.addEventListener("input", () => {
+      riskScoreDisplay.textContent = riskScore.value;
+    });
+
+    document.querySelectorAll(".preset").forEach((button) => {
+      button.addEventListener("click", () => {
+        const preset = presets[button.dataset.preset];
+
+        document.getElementById("matterType").value = preset.matterType;
+        document.getElementById("businessUnit").value = preset.businessUnit;
+        document.getElementById("counterparty").value = preset.counterparty;
+        document.getElementById("matterValue").value = preset.value;
+        document.getElementById("description").value = preset.description;
+        riskScore.value = preset.risk;
+        riskScoreDisplay.textContent = preset.risk;
+
+        const deadline = new Date();
+        deadline.setDate(deadline.getDate() + 2);
+
+        document.getElementById("deadline").value =
+          deadline.toISOString().split("T")[0];
+
+        document.getElementById("demo").scrollIntoView({
+          behavior: "smooth"
+        });
+      });
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const matterType = document.getElementById("matterType").value;
+      const score = Number(riskScore.value);
+      const risk = getRisk(score);
+      const team = routing[matterType] || "Legal Operations";
+
+      activeResult = {
+        id: makeRequestId(),
+        matterType,
+        score,
+        risk,
+        team
+      };
+
+      document.getElementById("resultId").textContent =
+        `Demo Request ID: ${activeResult.id}`;
+
+      document.getElementById("assignedTeam").textContent = team;
+      document.getElementById("sla").textContent =
+        `${risk.slaHours} hours`;
+
+      document.getElementById("approval").textContent =
+        risk.approval ? "Required" : "Not required";
+
+      document.getElementById("status").textContent =
+        risk.approval ? "Pending Approval" : "Assigned";
+
+      const badge = document.getElementById("riskBadge");
+      badge.className = `badge ${risk.badge}`;
+      badge.textContent = `${risk.rating} risk`;
+
+      document.getElementById("reasoning").textContent =
+        `This request was routed to ${team} because it was classified as ${matterType}. ` +
+        `A risk score of ${score} produced a ${risk.rating} classification. ` +
+        `${risk.rating} matters use a ${risk.slaHours}-hour demo SLA` +
+        (risk.approval
+          ? " and require human approval before final assignment."
+          : " and can be assigned without the high-risk approval gate.");
+
+      escalationPanel.style.display = "none";
+      document.getElementById("simulateBreach").disabled = false;
+      document.getElementById("simulateBreach").textContent =
+        "Simulate SLA breach";
+
+      renderLifecycle(activeResult);
+
+      resultSection.style.display = "block";
+
+      resultSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    });
+
+    document.getElementById("simulateBreach").addEventListener("click", () => {
+      if (!activeResult) return;
+
+      escalationPanel.style.display = "block";
+      renderLifecycle(activeResult, true);
+
+      const button = document.getElementById("simulateBreach");
+      button.disabled = true;
+      button.textContent = "Matter escalated";
+    });
+
+    document.getElementById("newMatter").addEventListener("click", () => {
+      document.getElementById("demo").scrollIntoView({
+        behavior: "smooth"
+      });
+    });
+
+    document.getElementById("startDemo").addEventListener("click", () => {
+      document.getElementById("demo").scrollIntoView({
+        behavior: "smooth"
+      });
+    });
+
+    document.getElementById("viewProcess").addEventListener("click", () => {
+      document.getElementById("process").scrollIntoView({
+        behavior: "smooth"
+      });
+    });
+
+    const defaultDeadline = new Date();
+    defaultDeadline.setDate(defaultDeadline.getDate() + 7);
+    document.getElementById("deadline").value =
+      defaultDeadline.toISOString().split("T")[0];
+  </script>
+</body>
+</html>
